@@ -26,9 +26,10 @@ El procesamiento de los datos (ETL) y la selección de características (*Featur
 
 ## Modelado de Machine Learning (TensorFlow / Keras)
 
-Se diseñaron y evaluaron tres topologías de redes neuronales secuenciales para abordar el problema de regresión. El código de producción del mejor modelo se encuentra encapsulado en `modelo.py`, mientras que la experimentación completa reside en el *notebook*.
+Se diseñaron y evaluaron tres topologías de redes neuronales secuenciales para abordar el problema de regresión. El código de producción del mejor modelo se encuentra encapsulado en `modelo.py`, mientras que la experimentación completa reside en el [notebook](proyecto_HAWC_NRJC.ipynb).
 
 **Topología 1 (Modelo Final / Mejor Rendimiento):**
+
 Red densa optimizada para extraer patrones directos sin penalización excesiva.
 ```python
 model_1 = Sequential([
@@ -37,7 +38,8 @@ model_1 = Sequential([
     Dense(1) # Salida de regresión (logEnergy)
 ])
 ```
-Topología 2 (Control de Sobreajuste con L2):
+**Topología 2 (Control de Sobreajuste con L2):**
+
 Inclusión de regularización matemática para penalizar pesos grandes.
 ```python
 model_2 = Sequential([
@@ -47,7 +49,8 @@ model_2 = Sequential([
     Dense(1)
 ])
 ```
-Topología 3 (Regularización Agresiva):
+**Topología 3 (Regularización Agresiva):**
+
 Combinación de L2 y Dropout para forzar a la red a aprender representaciones redundantes y robustas.
 
 ```python
@@ -59,7 +62,7 @@ model_3 = Sequential([
     Dense(1)
 ])
 ```
-Resultados y Evaluación del Desempeño
+## Resultados y Evaluación del Desempeño
 
 El análisis de error absoluto medio (MAE) y el ajuste gaussiano de los residuales demuestran la viabilidad del Modelo 1 como herramienta de reconstrucción:
 
