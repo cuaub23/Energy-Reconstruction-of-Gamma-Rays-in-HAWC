@@ -64,9 +64,14 @@ model_3 = Sequential([
 ```
 ## Resultados y Evaluación del Desempeño
 
-El análisis de error absoluto medio (MAE) y el ajuste gaussiano de los residuales demuestran la viabilidad del Modelo 1 como herramienta de reconstrucción:
+Para la evaluación final del modelo, se utilizó el conjunto de prueba (*Test Set* del 20%) que fue aislado al inicio del proceso. Se utilizaron las diferentes redes neuronales entrenadas para predecir la energía en estos datos invisibles para el modelo. 
 
-[Comparativa de Modelos](grafica.png))
+Posteriormente, se calculó el error comparando las predicciones contra los valores esperados de la simulación de Monte Carlo (`mc.logEnergy`). Para caracterizar correctamente la distribución de estos errores, se realizó un ajuste gaussiano sobre los residuales. A partir de este análisis, se graficaron dos métricas fundamentales para la viabilidad física del modelo:
 
-*Altas Energías: La predicción del Modelo 1 supera en precisión (menor dispersión) a los modelos preexistentes del estado del arte.
-*Bajas Energías: Aunque el modelo de red neuronal estándar (NN) previo presenta una ligera ventaja en el MAE del ajuste gaussiano en este régimen, nuestro Modelo 1 mantiene un sesgo significativamente menor, logrando un equilibrio robusto en todo el espectro energético.
+1. **El Sesgo (BIAS):** La desviación promedio de las predicciones respecto a la energía real.
+2. **La Resolución:** La dispersión o anchura del error (sigma del ajuste gaussiano).
+
+[Comparativa de Modelos](grafica.png)
+
+* Altas Energías: La predicción del Modelo 1 supera en precisión (menor dispersión) a los modelos preexistentes.
+* Bajas Energías: Aunque el modelo NN previo presenta una ventaja respecto a nuestro modelo en el BIAS. Sin embargo, en la resolución ($\sigma$ del ajuste gaussiano) tanto el modelo 1 correlacionado como el modelo 2 correlacionado se mantienen con menor resolución a casi todas las escalas. 
