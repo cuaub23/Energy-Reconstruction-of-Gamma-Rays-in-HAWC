@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
+df = pd.read_csv('Datos.csv') 
 #Caracteristicas sugeridas por el articulo [1] mas caracteristicas agregadas por su correlacion
 indices_features_corr = [df.columns.get_loc('rec.zenithAngle'), df.columns.get_loc('rec.coreX'), df.columns.get_loc('rec.coreY'),
           df.columns.get_loc('rec.nHit'), df.columns.get_loc('rec.logNPE'), df.columns.get_loc('rec.logMaxPE'),
